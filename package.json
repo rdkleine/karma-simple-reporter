@@ -21,7 +21,6 @@
   "dependencies": {
   },
   "peerDependencies": {
-    "karma": ">=0.9"
   },
   "license": "MIT",
   "devDependencies": {
