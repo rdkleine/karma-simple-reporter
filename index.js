@@ -1,6 +1,6 @@
 var util = require('util');
 
-var SimpleReporter = function(helper, logger, config) {
+var SimpleReporter = function() {
   this.adapters = [adapter || process.stdout.write.bind(process.stdout)]
   
   this.onRunStart = function(browsers){
@@ -46,7 +46,7 @@ var SimpleReporter = function(helper, logger, config) {
   }
 };
 
-SimpleReporter.$inject = ['helper', 'logger','config.growlReporter'];
+// SimpleReporter.$inject = ['helper', 'logger','config.growlReporter'];
 
 // PUBLISH DI MODULE
 module.exports = {
