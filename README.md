@@ -1,4 +1,4 @@
-# karma-junit-reporter
+# karma-simple-reporter
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/karma-runner/karma-junit-reporter)
  [![npm version](https://img.shields.io/npm/v/karma-junit-reporter.svg?style=flat-square)](https://www.npmjs.com/package/karma-junit-reporter) [![npm downloads](https://img.shields.io/npm/dm/karma-junit-reporter.svg?style=flat-square)](https://www.npmjs.com/package/karma-junit-reporter)
@@ -12,7 +12,7 @@
 The easiest way is to keep `karma-junit-reporter` as a devDependency in your `package.json`. Just run
 
 ```bash
-npm install karma-junit-reporter --save-dev
+npm install karma-simple-reporter --save-dev
 ```
 
 to let npm automatically add it there.
