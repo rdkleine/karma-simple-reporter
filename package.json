@@ -1,5 +1,5 @@
 {
-  "name": "karma-simple-reporter",
+  "name": "karma-simpler-reporter",
   "version": "0.0.4",
   "description": "A Karma plugin. Report results in a simple format.",
   "main": "index.js",
@@ -18,12 +18,13 @@
     "karma-reporter"
   ],
   "author": "Ralf de Kleine <ralfdekleine+git@gmail.com>",
-  "dependencies": {
-  },
-  "peerDependencies": {
-  },
+  "dependencies": {},
+  "peerDependencies": {},
   "license": "MIT",
-  "devDependencies": {
+  "devDependencies": {},
+  "contributors": [],
+  "bugs": {
+    "url": "https://github.com/rdkleine/karma-simple-reporter/issues"
   },
-  "contributors": []
+  "homepage": "https://github.com/rdkleine/karma-simple-reporter#readme"
 }
