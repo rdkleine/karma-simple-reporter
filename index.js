@@ -41,31 +41,34 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
   }
 
   this.specFailure = function (browser, result) {
-
-    var msg = result.suite + '\n' + result.description + '\n';
-
+    var msg = '\033[31mError\033[m\n';
+    msg += 'Suite: ' + result.suite + '\n'
+    msg += 'Description: ' + result.description + '\n';
+    msg += 'Log:\n';
     result.log.forEach(function (log) {
-      msg += formatError(log, '\t')
+      msg += '|' + formatError(log, '\t')
     })
-
     this.writeLog(msg, 'err');
-    //this.writeCommonMsg(msg)
   }
 
   this.writeLog = function (message, messageType) {
+
     switch (messageType) {
       case 'count':
+        // clean previous line if it was a count line
         if (this.lastMessageType === 'count') {
           this.writeCommonMsg(MOVE_LEFT + CLEAR_LINE + MOVE_UP);
-          this.writeCommonMsg('a' + message);
-        } else {
-          this.writeCommonMsg('b' + message);
         }
+
+        // write count
+        this.writeCommonMsg(message + '\n');
         break;
       case 'err':
-        this.writeCommonMsg('\033[31mError:\033[m\n' + message);
+        // write error
+        this.writeCommonMsg(message + '\n');
         break;
       default:
+        // write other stuff
         this.writeCommonMsg(messageType + ' ' + message + '\n');
         break;
     }
@@ -75,7 +78,6 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
 
 // SimpleReporter.$inject = ['helper', 'logger','config.growlReporter'];
 
-// PUBLISH DI MODULE
 module.exports = {
   'reporter:simple': ['type', SimpleReporter]
 };
