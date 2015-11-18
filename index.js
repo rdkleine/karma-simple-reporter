@@ -33,6 +33,11 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
 
   this.onBrowserComplete = function (browser, result) {
     this.writeLog('onBrowserComplete', 'log');
+    this.writeLog('skipped:' + result, 'log');
+    // this.writeLog('success:' + result.success, 'log');
+    // this.writeLog('failed:' + result.failed, 'log');
+    // this.writeLog('sktotalip:' + result.total, 'log');
+    // this.writeLog('totalTime:' + result.totalTime, 'log');
   }
 
   this.specSuccess = function () {
@@ -41,12 +46,13 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
   }
 
   this.specFailure = function (browser, result) {
-    var msg = '\033[31mError\033[m\n';
-    msg += 'Suite: ' + result.suite + '\n'
-    msg += 'Description: ' + result.description + '\n';
-    msg += 'Log:\n';
+    var msg = '\033[37;1;31merror!\033[m\n';
+    msg += '\033[1;30msuite \033[1;37m' + result.suite + '\n'
+    msg += '\033[1;30mdescr \033[1;37m' + result.description + '\033[m\n';
     result.log.forEach(function (log) {
-      msg += '|' + formatError(log, '\t')
+      msg += formatError(log, '  ')
+        .replace(/\s{2,}/g, ' ')
+        .replace(/\t/g);
     })
     this.writeLog(msg, 'err');
   }
@@ -69,7 +75,7 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
         break;
       default:
         // write other stuff
-        this.writeCommonMsg(messageType + ' ' + message + '\n');
+        this.writeCommonMsg(message + '\n');
         break;
     }
     this.lastMessageType = messageType
