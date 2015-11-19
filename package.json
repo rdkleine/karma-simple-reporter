@@ -1,6 +1,6 @@
 {
   "name": "karma-simpler-reporter",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A Karma plugin. Report results in a simple format.",
   "main": "index.js",
   "files": [
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/rdkleine/karma-simple-reporter.git"
+    "url": "git://github.com/rdkleine/karma-simpler-reporter.git"
   },
   "keywords": [
     "karma-plugin",
@@ -24,7 +24,7 @@
   "devDependencies": {},
   "contributors": [],
   "bugs": {
-    "url": "https://github.com/rdkleine/karma-simple-reporter/issues"
+    "url": "https://github.com/rdkleine/karma-simpler-reporter/issues"
   },
-  "homepage": "https://github.com/rdkleine/karma-simple-reporter#readme"
+  "homepage": "https://github.com/rdkleine/karma-simpler-reporter#readme"
 }
