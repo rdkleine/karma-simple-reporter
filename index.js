@@ -21,7 +21,7 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
       if (!results.falied) {
         this.writeCommonMsg('success', results.success);
       } else {
-        this.writeCommonMsg('faild', results.failed, results.success);
+        this.writeCommonMsg('failed', results.failed, results.success);
       }
     }
   }
@@ -31,13 +31,15 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
     this._browsers.push(browser);
   }
 
-  this.onBrowserComplete = function (browser, result) {
-    this.writeLog('onBrowserComplete', 'log');
-    this.writeLog('skipped:' + result, 'log');
-    // this.writeLog('success:' + result.success, 'log');
-    // this.writeLog('failed:' + result.failed, 'log');
-    // this.writeLog('sktotalip:' + result.total, 'log');
-    // this.writeLog('totalTime:' + result.totalTime, 'log');
+  this.onBrowserComplete = function (browser) {
+    var result = browser.lastResult
+    this.writeLog('\n', 'log');
+    //this.writeLog('\033[1;30mskipped:\033[1;30m \033[1;37m' + result.skiped, 'log');
+    this.writeLog('\033[1;30msuccess:\033[1;30m \033[1;37m' + result.success, 'log');
+    this.writeLog('\033[1;30mfailed:\033[1;30m  \033[1;37m' + result.failed, 'log');
+    this.writeLog('\033[1;30mtotal:\033[1;30m   \033[1;37m' + result.total, 'log');
+    this.writeLog('\033[1;30mtime:\033[1;30m    \033[1;37m' + result.totalTime + ' ms\033[m', 'log');
+    
   }
 
   this.specSuccess = function () {
