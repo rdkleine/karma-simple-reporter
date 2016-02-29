@@ -1,7 +1,7 @@
 {
   "name": "karma-simpler-reporter",
-  "version": "0.0.8",
-  "description": "A Karma plugin. Report results in a simple format.",
+  "version": "0.0.9",
+  "description": "A Karma plugin. Reports karma results in a simple format.",
   "main": "index.js",
   "files": [
     "index.js"

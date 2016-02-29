@@ -17,7 +17,7 @@ to let npm automatically add it there.
 // karma.conf.js
 module.exports = function(config) {
   config.set({
-    reporters: ['progress', 'simpler'],
+    reporters: ['progress', 'simple'],
   });
 };
 ```
