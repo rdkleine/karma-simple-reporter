@@ -6,14 +6,17 @@ var CLEAR_LINE = new Buffer('1b5b304b', 'hex').toString();
 
 var count = 0;
 var lastMessageType = 'log';
-var BaseReporter = require('./base')
+//var BaseReporter = require('./base')
 
 var SimpleReporter = function (baseReporterDecorator, formatError, config) {
   baseReporterDecorator(this);
 
   this.onRunStart = function (browsers) {
     this._browsers = [];
-    this.writeLog('Starting karma-simpler-reporter', 'log');
+
+    this.writeLog('Starting karma-simpler-reporterasd', 'log');
+    // this.writeLog(config.logLevel, 'log');
+    // this.writeLog(Object.keys(config.configFile), 'log');
   }
 
   this.onRunComplete = function (browsers, results) {
@@ -35,29 +38,31 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
   this.onBrowserComplete = function (browser) {
     var result = browser.lastResult
     this.writeLog('\n', 'log');
-    
-    this.writeLog('\033[1;30msuccess:\033[1;30m \033[1;37m' + result.success + ' \033[1;30m(' + (result.success / result.total * 100).toFixed(2) +'%)' , 'log');
-    this.writeLog('\033[1;30mfailed:\033[1;30m  \033[1;37m' + result.failed + ' \033[1;30m(' + (result.failed / result.total * 100).toFixed(2) +'%)' , 'log');
+
+    this.writeLog('\033[1;30msuccess:\033[1;30m \033[1;37m' + result.success + ' \033[1;30m(' + (result.success / result.total * 100).toFixed(2) + '%)', 'log');
+    this.writeLog('\033[1;30mfailed:\033[1;30m  \033[1;37m' + result.failed + ' \033[1;30m(' + (result.failed / result.total * 100).toFixed(2) + '%)', 'log');
     this.writeLog('\033[1;30mtotal:\033[1;30m   \033[1;37m' + result.total, 'log');
     this.writeLog('\033[1;30mtime:\033[1;30m    \033[1;37m' + result.totalTime + ' ms\033[m', 'log');
   }
 
   this.specSuccess = function () {
     count = count + 1;
-    this.writeLog('Nr: ' + count, 'count');
+    if (config.logLevel == config.LOG_INFO) {
+      this.writeLog('Nr: ' + count, 'count');
+    }
   }
 
   this.specFailure = function (browser, result) {
-      
+
     var msg = '\033[37;1;31merror!\033[m\n';
     msg += '\033[1;30msuite \033[1;37m' + result.suite + '\n'
     msg += '\033[1;30mdescr \033[1;37m' + result.description + '\033[m\n';
-  
+
     result.log.forEach(function (log) {
-        msg += formatError(log, '  ')
-            .replace(/\s{2,}/g, ' ')
-            .replace(/\t/g)
-            .replace('<-', '\n'); // ??
+      msg += formatError(log, '  ')
+        .replace(/\s{2,}/g, ' ')
+        .replace(/\t/g)
+        .replace('<-', '\n'); // ??
     })
     this.writeLog(msg, 'err');
   }
@@ -89,8 +94,8 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
 
 // SimpleReporter.$inject = ['helper', 'logger','config.growlReporter'];
 
-// module.exports = {
-//   'reporter:simple': ['type', SimpleReporter]
-// };
+module.exports = {
+  'reporter:simple': ['type', SimpleReporter]
+};
 
-module.exports = SimpleReporter;
+//module.exports = SimpleReporter;
