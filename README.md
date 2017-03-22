@@ -1,5 +1,5 @@
 # karma-simpler-reporter
-> Simpler karma reporter
+> Yet another Karma reporter created with the purpose to keep the testlog smaller.
 
 ## Installation
 

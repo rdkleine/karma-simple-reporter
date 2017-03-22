@@ -6,6 +6,7 @@ var CLEAR_LINE = new Buffer('1b5b304b', 'hex').toString();
 
 var count = 0;
 var lastMessageType = 'log';
+var BaseReporter = require('./base')
 
 var SimpleReporter = function (baseReporterDecorator, formatError, config) {
   baseReporterDecorator(this);
@@ -88,6 +89,8 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
 
 // SimpleReporter.$inject = ['helper', 'logger','config.growlReporter'];
 
-module.exports = {
-  'reporter:simple': ['type', SimpleReporter]
-};
+// module.exports = {
+//   'reporter:simple': ['type', SimpleReporter]
+// };
+
+module.exports = SimpleReporter;
