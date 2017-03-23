@@ -48,7 +48,7 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
   this.specSuccess = function () {
     count = count + 1;
     if (config.logLevel == config.LOG_INFO) {
-      this.writeLog('Nr: ' + count, 'count');
+      this.writeLog('Nr: ' + count, 'log');
     }
   }
 
