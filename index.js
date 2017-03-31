@@ -14,7 +14,7 @@ var SimpleReporter = function (baseReporterDecorator, formatError, config) {
   this.onRunStart = function (browsers) {
     this._browsers = [];
 
-    this.writeLog('Starting karma-simpler-reporterasd', 'log');
+    this.writeLog('Starting karma-simpler-reporter', 'log');
     // this.writeLog(config.logLevel, 'log');
     // this.writeLog(Object.keys(config.configFile), 'log');
   }
